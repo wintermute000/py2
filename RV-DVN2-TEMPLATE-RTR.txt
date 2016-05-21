@@ -1,0 +1,580 @@
+version 15.4
+service timestamps debug datetime msec localtime show-timezone
+service timestamps log datetime msec localtime show-timezone
+service password-encryption
+!
+hostname RV-DVN2-%sitename%-RTR
+!
+boot-start-marker
+
+boot-end-marker
+!
+!
+logging buffered 16384 informational
+enable secret 5 $1$vvEc$pzkHhzdKXvIgxsoT59A3n/
+!
+aaa new-model
+!
+!
+aaa authentication login default local
+aaa authentication enable default enable
+!
+!
+!
+!
+!
+aaa session-id common
+clock timezone MELB 10 0
+clock summer-time AEDT recurring 1 Sun Oct 2:00 1 Sun Apr 3:00
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+ip dhcp excluded-address %supernet_prefix%0.1 %supernet_prefix%0.10
+ip dhcp excluded-address %supernet_prefix%8.1 %supernet_prefix%8.10
+ip dhcp excluded-address %supernet_prefix%16.1 %supernet_prefix%16.10
+ip dhcp excluded-address %supernet_prefix%24.1 %supernet_prefix%24.10
+ip dhcp excluded-address %supernet_prefix%32.1 %supernet_prefix%32.10
+ip dhcp excluded-address %supernet_prefix%40.1 %supernet_prefix%40.10
+ip dhcp excluded-address %supernet_prefix%48.1 %supernet_prefix%48.10
+ip dhcp excluded-address %supernet_prefix%56.1 %supernet_prefix%56.10
+ip dhcp excluded-address %supernet_prefix%64.1 %supernet_prefix%64.10
+ip dhcp excluded-address %supernet_prefix%72.1 %supernet_prefix%72.10
+ip dhcp excluded-address %supernet_prefix%80.1 %supernet_prefix%80.10
+ip dhcp excluded-address %supernet_prefix%88.1 %supernet_prefix%88.10
+ip dhcp excluded-address %supernet_prefix%96.1 %supernet_prefix%96.10
+ip dhcp excluded-address %supernet_prefix%104.1 %supernet_prefix%104.10
+ip dhcp excluded-address %supernet_prefix%112.1 %supernet_prefix%112.10
+ip dhcp excluded-address %supernet_prefix%120.1 %supernet_prefix%120.10
+ip dhcp excluded-address %supernet_prefix%128.1 %supernet_prefix%128.10
+ip dhcp excluded-address %supernet_prefix%136.1 %supernet_prefix%136.10
+ip dhcp excluded-address %supernet_prefix%144.1 %supernet_prefix%144.10
+ip dhcp excluded-address %supernet_prefix%152.1 %supernet_prefix%152.10
+ip dhcp excluded-address %supernet_prefix%160.1 %supernet_prefix%160.10
+ip dhcp excluded-address %supernet_prefix%168.1 %supernet_prefix%168.10
+ip dhcp excluded-address %supernet_prefix%176.1 %supernet_prefix%176.10
+ip dhcp excluded-address %supernet_prefix%184.1 %supernet_prefix%184.10
+ip dhcp excluded-address %supernet_prefix%192.1 %supernet_prefix%192.10
+ip dhcp excluded-address %supernet_prefix%200.1 %supernet_prefix%200.10
+ip dhcp excluded-address %supernet_prefix%208.1 %supernet_prefix%208.10
+ip dhcp excluded-address %supernet_prefix%216.1 %supernet_prefix%216.10
+ip dhcp excluded-address %supernet_prefix%224.1 %supernet_prefix%224.10
+ip dhcp excluded-address %supernet_prefix%232.1 %supernet_prefix%232.10
+ip dhcp excluded-address %supernet_prefix%240.1 %supernet_prefix%240.10
+ip dhcp excluded-address %supernet_prefix%248.1 %supernet_prefix%248.10
+!
+ip dhcp pool DHCP-VLAN2
+ network %supernet_prefix%0.0 255.255.248.0
+ default-router %supernet_prefix%0.1
+ dns-server %supernet_prefix%0.1
+ domain-name rvl.internal
+!
+ip dhcp pool DHCP-VLAN3
+ network %supernet_prefix%8.0 255.255.248.0
+ default-router %supernet_prefix%8.1
+ dns-server %supernet_prefix%8.1
+ domain-name rvl.internal
+!
+ip dhcp pool DHCP-VLAN4
+ network %supernet_prefix%16.0 255.255.248.0
+ default-router %supernet_prefix%16.1
+ dns-server %supernet_prefix%16.1
+ domain-name rvl.internal
+!
+ip dhcp pool DHCP-VLAN5
+ network %supernet_prefix%32.0 255.255.248.0
+ default-router %supernet_prefix%32.1
+ dns-server %supernet_prefix%32.1
+ domain-name rvl.internal
+!
+ip dhcp pool DHCP-BOOKMAKER
+ network %supernet_prefix%40.0 255.255.248.0
+ default-router %supernet_prefix%40.1
+ dns-server %supernet_prefix%40.1
+!
+ip dhcp pool DHCP-VLAN7
+ network %supernet_prefix%48.0 255.255.248.0
+ default-router %supernet_prefix%48.1
+ dns-server %supernet_prefix%48.14
+!
+ip dhcp pool DHCP-VLAN8
+ network %supernet_prefix%56.0 255.255.248.0
+ default-router %supernet_prefix%56.1
+ dns-server %supernet_prefix%56.1
+!
+ip dhcp pool DHCP-VLAN9
+ network %supernet_prefix%64.0 255.255.248.0
+ default-router %supernet_prefix%64.1
+ dns-server %supernet_prefix%64.1
+!
+ip dhcp pool DHCP-VLAN10
+ network %supernet_prefix%72.0 255.255.248.0
+ default-router %supernet_prefix%72.1
+ dns-server %supernet_prefix%72.1
+!
+ip dhcp pool DHCP-VLAN11
+ network %supernet_prefix%80.0 255.255.248.0
+ default-router %supernet_prefix%80.1
+ dns-server %supernet_prefix%80.1
+!
+ip dhcp pool DHCP-VLAN12
+ network %supernet_prefix%88.0 255.255.248.0
+ default-router %supernet_prefix%88.1
+ dns-server %supernet_prefix%88.1
+!
+ip dhcp pool DHCP-VLAN13
+ network %supernet_prefix%96.0 255.255.248.0
+ default-router %supernet_prefix%96.1
+ dns-server %supernet_prefix%96.1
+!
+ip dhcp pool DHCP-VLAN14
+ network %supernet_prefix%104.0 255.255.248.0
+ default-router %supernet_prefix%104.1
+ dns-server %supernet_prefix%104.1
+!
+ip dhcp pool DHCP-VLAN15
+ network %supernet_prefix%112.0 255.255.248.0
+ default-router %supernet_prefix%112.1
+ dns-server %supernet_prefix%112.1
+!
+ip dhcp pool DHCP-VLAN16
+ network %supernet_prefix%120.0 255.255.248.0
+ default-router %supernet_prefix%120.1
+ dns-server %supernet_prefix%120.1
+!
+ip dhcp pool DHCP-VLAN17
+ network %supernet_prefix%128.0 255.255.248.0
+ default-router %supernet_prefix%128.1
+ dns-server %supernet_prefix%128.1
+!
+ip dhcp pool DHCP-VLAN18
+ network %supernet_prefix%136.0 255.255.248.0
+ default-router %supernet_prefix%136.1
+ dns-server %supernet_prefix%136.1
+!
+ip dhcp pool DHCP-VLAN19
+ network %supernet_prefix%144.0 255.255.248.0
+ default-router %supernet_prefix%144.1
+ dns-server %supernet_prefix%144.1
+!
+ip dhcp pool DHCP-VLAN20
+ network %supernet_prefix%152.0 255.255.248.0
+ default-router %supernet_prefix%152.1
+ dns-server %supernet_prefix%152.1
+!
+ip dhcp pool DHCP-VLAN21
+ network %supernet_prefix%160.0 255.255.248.0
+ default-router %supernet_prefix%160.1
+ dns-server %supernet_prefix%160.1
+!
+ip dhcp pool DHCP-VLAN22
+ network %supernet_prefix%168.0 255.255.248.0
+ default-router %supernet_prefix%168.1
+ dns-server %supernet_prefix%168.1
+!
+ip dhcp pool DHCP-VLAN23
+ network %supernet_prefix%176.0 255.255.248.0
+ default-router %supernet_prefix%176.1
+ dns-server %supernet_prefix%176.1
+!
+ip dhcp pool DHCP-VLAN24
+ network %supernet_prefix%184.0 255.255.248.0
+ default-router %supernet_prefix%184.1
+ dns-server %supernet_prefix%184.1
+!
+ip dhcp pool DHCP-VLAN25
+ network %supernet_prefix%192.0 255.255.248.0
+ default-router %supernet_prefix%192.1
+ dns-server 203.50.2.71 139.130.4.4
+!
+ip dhcp pool DHCP-VLAN26
+ network %supernet_prefix%200.0 255.255.248.0
+ default-router %supernet_prefix%200.1
+ dns-server %supernet_prefix%200.1
+!
+ip dhcp pool DHCP-VLAN27
+ network %supernet_prefix%208.0 255.255.248.0
+ default-router %supernet_prefix%208.1
+ dns-server %supernet_prefix%208.1
+!
+ip dhcp pool DHCP-VLAN28
+ network %supernet_prefix%216.0 255.255.248.0
+ default-router %supernet_prefix%216.1
+ dns-server %supernet_prefix%216.1
+!
+ip dhcp pool DHCP-VLAN29
+ network %supernet_prefix%224.0 255.255.248.0
+ default-router %supernet_prefix%224.1
+ dns-server %supernet_prefix%224.1
+!
+ip dhcp pool DHCP-VLAN30
+ network %supernet_prefix%232.0 255.255.248.0
+ default-router %supernet_prefix%232.1
+ dns-server %supernet_prefix%232.1
+!
+ip dhcp pool DHCP-VLAN31
+ network %supernet_prefix%240.0 255.255.248.0
+ default-router %supernet_prefix%240.1
+ dns-server %supernet_prefix%240.1
+!
+ip dhcp pool DHCP-VLAN32
+ network %supernet_prefix%248.0 255.255.248.0
+ default-router %supernet_prefix%248.1
+ dns-server %supernet_prefix%248.1
+!
+!
+!
+ip domain name racingvictoria.net.au
+ip name-server 172.16.0.128
+ip name-server 172.16.0.133
+ip cef
+no ipv6 cef
+multilink bundle-name authenticated
+!
+!
+cts logging verbose
+!
+!
+username cisco secret 5 $1$53jn$yGwxNlitK35ft09gpZNRx.
+username o2networks privilege 15 secret 5 $1$rPSp$rLYr2fYVJG//tAewZqpbP0
+!
+redundancy
+!
+!
+!
+class-map match-any CM-EF
+ match dscp ef
+ match access-group name ACL-VOICE-SUBNETS
+class-map match-any CM-AF41
+ match dscp af41
+ match access-group name ACL-HAWKEYE-SUBNETS
+class-map match-any CM-AF42
+ match dscp af42
+ match access-group name ACL-VIDEO-SUBNETS
+class-map match-all CM-HAWKEYE
+ match dscp af41
+class-map match-all CM-VIDEO
+ match dscp af42
+class-map match-all CM-VOICE
+ match dscp ef
+!
+policy-map PM-QOS-50M-CHILD
+ class CM-VOICE
+  priority percent 4
+ class CM-HAWKEYE
+  bandwidth percent 41
+ class CM-VIDEO
+  bandwidth percent 21
+ class class-default
+  fair-queue
+policy-map PM-QOS-50M-PARENT
+ class class-default
+  shape average 49500000
+   service-policy PM-QOS-50M-CHILD
+policy-map PM-QOS-CLASSIFY
+ class CM-EF
+  set dscp ef
+ class CM-AF41
+  set dscp af41
+ class CM-AF42
+  set dscp af42
+ class class-default
+  set dscp default
+!
+!
+!
+!
+!
+interface Loopback0
+ description MGT
+ ip address %loopback% %loopback_mask%
+ ip ospf message-digest-key 1 md5 7 15000419102325230817030C41
+!
+interface Embedded-Service-Engine0/0
+ no ip address
+ shutdown
+!
+interface GigabitEthernet0/0
+ description WAN
+ ip address %wan_router_ip% %wannet_mask%
+ ip ospf message-digest-key 1 md5 7 0519091A3545400E3921213C59
+ duplex auto
+ speed auto
+ service-policy output PM-QOS-50M-PARENT
+!
+interface GigabitEthernet0/1
+ no ip address
+ duplex auto
+ speed auto
+!
+interface GigabitEthernet0/1.2
+ description DATA
+ encapsulation dot1Q 2
+ ip address %supernet_prefix%0.1 255.255.248.0
+ service-policy input PM-QOS-CLASSIFY
+!
+interface GigabitEthernet0/1.3
+ description TRUCK-HAWKEYE
+ encapsulation dot1Q 3
+ ip address %supernet_prefix%8.1 255.255.248.0
+ service-policy input PM-QOS-CLASSIFY
+!
+interface GigabitEthernet0/1.4
+ description TRUCK-2
+ encapsulation dot1Q 4
+ ip address %supernet_prefix%16.1 255.255.248.0
+ service-policy input PM-QOS-CLASSIFY
+!
+interface GigabitEthernet0/1.5
+ description TRUCK-3
+ encapsulation dot1Q 5
+ ip address %supernet_prefix%32.1 255.255.248.0
+ service-policy input PM-QOS-CLASSIFY
+!
+interface GigabitEthernet0/1.6
+ description BOOKMAKER
+ encapsulation dot1Q 6
+ ip address %supernet_prefix%40.1 255.255.248.0
+ ip access-group ACL-BOOKMAKER-INTERNET-ONLY in
+ service-policy input PM-QOS-CLASSIFY
+!
+interface GigabitEthernet0/1.7
+ description VIDEO
+ encapsulation dot1Q 7
+ ip address %supernet_prefix%48.1 255.255.248.0
+ service-policy input PM-QOS-CLASSIFY
+!
+interface GigabitEthernet0/1.8
+ description VOICE
+ encapsulation dot1Q 8
+ ip address %supernet_prefix%56.1 255.255.248.0
+ service-policy input PM-QOS-CLASSIFY
+!
+interface GigabitEthernet0/1.9
+ encapsulation dot1Q 9
+ ip address %supernet_prefix%64.1 255.255.248.0
+ service-policy input PM-QOS-CLASSIFY
+!
+interface GigabitEthernet0/1.10
+ encapsulation dot1Q 10
+ ip address %supernet_prefix%72.1 255.255.248.0
+ service-policy input PM-QOS-CLASSIFY
+!
+interface GigabitEthernet0/1.11
+ encapsulation dot1Q 11
+ ip address %supernet_prefix%80.1 255.255.248.0
+ ip access-group ACL-BOOKMAKER-INTERNET-ONLY in
+ service-policy input PM-QOS-CLASSIFY
+!
+interface GigabitEthernet0/1.12
+ encapsulation dot1Q 12
+ ip address %supernet_prefix%88.1 255.255.248.0
+ service-policy input PM-QOS-CLASSIFY
+!
+interface GigabitEthernet0/1.13
+ encapsulation dot1Q 13
+ ip address %supernet_prefix%96.1 255.255.248.0
+ service-policy input PM-QOS-CLASSIFY
+!
+interface GigabitEthernet0/1.14
+ encapsulation dot1Q 14
+ ip address %supernet_prefix%104.1 255.255.248.0
+ service-policy input PM-QOS-CLASSIFY
+!
+interface GigabitEthernet0/1.15
+ encapsulation dot1Q 15
+ ip address %supernet_prefix%112.1 255.255.248.0
+ service-policy input PM-QOS-CLASSIFY
+!
+interface GigabitEthernet0/1.16
+ encapsulation dot1Q 16
+ ip address %supernet_prefix%120.1 255.255.248.0
+ service-policy input PM-QOS-CLASSIFY
+!
+interface GigabitEthernet0/1.17
+ encapsulation dot1Q 17
+ ip address %supernet_prefix%128.1 255.255.248.0
+ service-policy input PM-QOS-CLASSIFY
+!
+interface GigabitEthernet0/1.18
+ encapsulation dot1Q 18
+ ip address %supernet_prefix%136.1 255.255.248.0
+ service-policy input PM-QOS-CLASSIFY
+!
+interface GigabitEthernet0/1.19
+ encapsulation dot1Q 19
+ ip address %supernet_prefix%144.1 255.255.248.0
+ service-policy input PM-QOS-CLASSIFY
+!
+interface GigabitEthernet0/1.20
+ encapsulation dot1Q 20
+ ip address %supernet_prefix%152.1 255.255.248.0
+ service-policy input PM-QOS-CLASSIFY
+!
+interface GigabitEthernet0/1.21
+ encapsulation dot1Q 21
+ ip address %supernet_prefix%160.1 255.255.248.0
+ service-policy input PM-QOS-CLASSIFY
+!
+interface GigabitEthernet0/1.22
+ encapsulation dot1Q 22
+ ip address %supernet_prefix%168.1 255.255.248.0
+ service-policy input PM-QOS-CLASSIFY
+!
+interface GigabitEthernet0/1.23
+ encapsulation dot1Q 23
+ ip address %supernet_prefix%176.1 255.255.248.0
+ service-policy input PM-QOS-CLASSIFY
+!
+interface GigabitEthernet0/1.24
+ encapsulation dot1Q 24
+ ip address %supernet_prefix%184.1 255.255.248.0
+ service-policy input PM-QOS-CLASSIFY
+!
+interface GigabitEthernet0/1.25
+ encapsulation dot1Q 25
+ ip address %supernet_prefix%192.1 255.255.248.0
+ service-policy input PM-QOS-CLASSIFY
+!
+interface GigabitEthernet0/1.26
+ encapsulation dot1Q 26
+ ip address %supernet_prefix%200.1 255.255.248.0
+ service-policy input PM-QOS-CLASSIFY
+!
+interface GigabitEthernet0/1.27
+ encapsulation dot1Q 27
+ ip address %supernet_prefix%208.1 255.255.248.0
+ service-policy input PM-QOS-CLASSIFY
+!
+interface GigabitEthernet0/1.28
+ encapsulation dot1Q 28
+ ip address %supernet_prefix%216.1 255.255.248.0
+ service-policy input PM-QOS-CLASSIFY
+!
+interface GigabitEthernet0/1.29
+ encapsulation dot1Q 29
+ ip address %supernet_prefix%224.1 255.255.248.0
+ service-policy input PM-QOS-CLASSIFY
+!
+interface GigabitEthernet0/1.30
+ encapsulation dot1Q 30
+ ip address %supernet_prefix%232.1 255.255.248.0
+ service-policy input PM-QOS-CLASSIFY
+!
+interface GigabitEthernet0/1.31
+ encapsulation dot1Q 31
+ ip address %supernet_prefix%240.1 255.255.248.0
+ service-policy input PM-QOS-CLASSIFY
+!
+interface GigabitEthernet0/1.32
+ encapsulation dot1Q 32
+ ip address %supernet_prefix%248.1 255.255.248.0
+ service-policy input PM-QOS-CLASSIFY
+!
+interface GigabitEthernet0/2
+ no ip address
+ shutdown
+ duplex auto
+ speed auto
+!
+router ospf 1
+ router-id %loopback%
+ area 0 authentication message-digest
+ area %area% nssa no-summary
+ area %area% range %supernet% %supernet_mask%
+ passive-interface default
+ no passive-interface GigabitEthernet0/0
+ network %supernet% %supernet_mask% area %area%
+ network %wannet% %wannet_mask% area 0
+ network %loopback% %loopback_mask% area 0
+!
+ip forward-protocol nd
+!
+no ip http server
+no ip http access-class 23
+ip http authentication local
+no ip http secure-server
+ip http timeout-policy idle 60 life 86400 requests 10000
+!
+ip dns server
+
+!
+ip access-list extended ACL-BOOKMAKER-INTERNET-ONLY
+ permit icmp any any
+ permit udp 10.0.40.0 0.255.7.255 host 203.50.2.71 eq domain
+ permit udp 10.0.40.0 0.255.7.255 host 139.130.4.4 eq domain
+ permit udp 10.0.40.0 0.255.7.255 host 172.16.0.128 eq domain
+ permit udp 10.0.40.0 0.255.7.255 host 172.16.0.133 eq domain
+ deny   ip 10.0.40.0 0.255.7.255 10.0.0.0 0.255.255.255
+ deny   ip 10.0.40.0 0.255.7.255 172.16.0.0 0.15.255.255
+ deny   ip 10.0.40.0 0.255.7.255 192.168.0.0 0.0.255.255
+ permit ip 10.0.40.0 0.255.7.255 any
+ip access-list extended ACL-HAWKEYE-SUBNETS
+ permit ip 10.0.8.0 0.255.7.255 any
+ip access-list extended ACL-VIDEO-SUBNETS
+ permit ip 10.0.48.0 0.255.7.255 any
+ip access-list extended ACL-VOICE-SUBNETS
+ permit ip 10.0.56.0 0.255.7.255 any
+!
+logging trap notifications
+logging host 172.16.64.240
+!
+!
+snmp-server community FA5tH0r53s RO
+snmp-server ifindex persist
+!
+!
+!
+control-plane
+!
+no banner login
+no banner motd
+no banner exec
+banner motd ^CC
+
+
+                      ***** Authorised use only *****
+
+***************************************************************************
+* WARNING:    Under Australian law, it is a criminal offence to:          *
+*              i. Obtain access to data without authority                 *
+*                     (Penalty 2 years imprisonment)                      *
+*              ii. Damage, delete, alter or insert data without authority *
+*                     (Penalty 10 years imprisonment)                     *
+***************************************************************************
+
+^C
+!
+line con 0
+ logging synchronous
+ stopbits 1
+line aux 0
+ stopbits 1
+line 2
+ no activation-character
+ no exec
+ transport preferred none
+ transport output pad telnet rlogin lapb-ta mop udptn v120 ssh
+ stopbits 1
+line vty 0 4
+no access-class 23 in
+ exec-timeout 20 0
+ logging synchronous
+ transport input ssh
+line vty 5 15
+no access-class 23 in
+ exec-timeout 20 0
+ logging synchronous
+ transport input ssh
+!
+scheduler allocate 20000 1000
+!
+end
+
