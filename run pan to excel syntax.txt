@@ -1,0 +1,16 @@
+pan_to_excel2.py --apikey "LUFRPT1Xdk0zK2sxV0dGY3FlNmdVZ2dJZjd1eU1JOEU9TmV1NjBqL01EbW5FMHpGMnNpaGMzMUJscjk2M2VKNldsM3hTZHhjcVVNcz0" --firewall "Altona Library" --panorama "http://10.47.67.65"
+
+pan_security_to_excel2.py --apikey "LUFRPT1Xdk0zK2sxV0dGY3FlNmdVZ2dJZjd1eU1JOEU9TmV1NjBqL01EbW5FMHpGMnNpaGMzMUJscjk2M2VKNldsM3hTZHhjcVVNcz0" --firewall "Altona CC" --panorama "http://10.47.67.65"
+pan_nat_to_excel.py --apikey "LUFRPT1Xdk0zK2sxV0dGY3FlNmdVZ2dJZjd1eU1JOEU9TmV1NjBqL01EbW5FMHpGMnNpaGMzMUJscjk2M2VKNldsM3hTZHhjcVVNcz0" --firewall "Altona CC" --panorama "http://10.47.67.65"
+
+
+!!! NAT
+
+/config/devices/entry[@name='localhost.localdomain']/device-group/entry[@name='Altona CC']/pre-rulebase/nat
+
+
+http://10.47.67.65/api/?REST_API_TOKEN=663712140&type=config&action=get&xpath=%2Fconfig%2Fdevices%2Fentry[%40name%3D%27localhost.localdomain%27]%2Fdevice-group%2Fentry[%40name%3D%27Altona+CC%27]%2Fpre-rulebase%2Fnat
+
+
+!!!!
+xapi = pan.xapi.PanXapi(tag=None,api_username="o2networks",api_password="4install",api_key="LUFRPT1Xdk0zK2sxV0dGY3FlNmdVZ2dJZjd1eU1JOEU9TmV1NjBqL01EbW5FMHpGMnNpaGMzMUJscjk2M2VKNldsM3hTZHhjcVVNcz0",hostname="10.47.67.65",use_http=True)
